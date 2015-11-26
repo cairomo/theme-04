@@ -18,7 +18,9 @@
 {block:Description}
     <meta name="description" content="{MetaDescription}" />
 {/block:Description}
-    <meta name="color:topbar" content="#f0f0f0" />
+
+    <meta name="color:topbar" content="#000000" />
+    <meta name="color:sidebar" content="#f0f0f0" />
     <meta name="color:text" content="#787878" />
     <meta name="color:bg" content="#f8f8f8" />
     <meta name="color:top links" content="#ffffff" />
@@ -184,10 +186,13 @@ li:before {
     {block:ifnotthintopbar}
     height: 6rem;
     {/block:ifnotthintopbar}
-    background-color: {color:topbar};
+    
     {block:ifmenuimagebg}
     background: url({image:header});
     {/block:ifmenuimagebg}
+    {block:ifnotmenuimagebg}
+    background-color: {color:topbar};
+    {/block:ifnotmenuimagebg}
     background-position:center;
     z-index: 1;
 }
@@ -208,6 +213,11 @@ li:before {
     padding-left: 3rem;
     font-family: {font:Title};
     color:{color:top links};
+}
+
+#title a:hover {
+    border-color:transparent;
+    color:{color:accent};
 }
 
 
@@ -253,7 +263,7 @@ menu {
     transition: all 0.3s ease-in-out;
 }
 
-#title a:hover, menu a:hover {
+menu a:hover {
     /* color:{color:accent};*/
     border-color: {color:top links}!important;
     color:{color:top links}!important;
@@ -276,7 +286,7 @@ menu {
     font-weight:700;
     color:{color:link hover};
     font-family:{font:Title};
-    background:{color:topbar};
+    background:{color:sidebar};
 }
 
 .con {
@@ -328,7 +338,7 @@ menu {
 #navlinks a {
     display:block;
     padding:1rem 0 1rem 1rem;
-    border-top:0.1rem solid {color:topbar};
+    border-top:0.1rem solid {color:sidebar};
     border-bottom:none;
     color:{color:text};
     -webkit-transition: all 0.5s ease-in-out;
@@ -350,7 +360,7 @@ menu {
     text-transform:uppercase;
     letter-spacing:0.1rem;
     outline:none;
-    border:1px solid {color:topbar};
+    border:1px solid {color:sidebar};
     line-height:1.5rem;
     width: 13.3rem;
     padding: 0.5rem 0.5rem 0.5rem 2.7rem;
@@ -372,7 +382,7 @@ menu {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 2.5rem;
-    border: 1px solid {color:topbar};
+    border: 1px solid {color:sidebar};
     display:inline;
 }
 
@@ -465,7 +475,7 @@ a. h2 {
     margin-left:-10px;
     text-align:center;
     display:inline;
-    border-top: 1px solid {color:topbar};
+    border-top: 1px solid {color:sidebar};
     padding: 1rem;
     position:absolute
 }
