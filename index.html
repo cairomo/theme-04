@@ -126,11 +126,11 @@ img {
 }
 
 small {
-    font-size:0.7rem;
+    font-size:0.8rem;
 }
 
 big {
-    font-size:1.3rem;
+    font-size:1.2rem;
 }
 
 pre {
@@ -402,6 +402,10 @@ menu {
     z-index:-20;
 }
 
+.post img {
+    max-width:540px;
+}
+
 /* post title */
 h2 {
     font-size:1.3rem;
@@ -531,6 +535,7 @@ a. h2 {
 .caption {
     text-align:left;
     word-break:break-word;
+    margin-top: -1rem;
 }
 
 /* posts's tags style */
@@ -652,7 +657,7 @@ ol.notes li:before {
         <a href="{text:menu link 3 url}">{text:menu link 3}</a>
         <a href="{text:menu link 4 url}">{text:menu link 4}</a>
     </menu>
-</div>
+</div> <!-- end topbar div -->
 <!-- header -->
 <header>
         <center>
@@ -780,10 +785,7 @@ ol.notes li:before {
         <!-- photoset post -->
         
         {block:Photoset}
-               <center>{block:Photos}
-        <img src="{PhotoURL-HighRes}" class="photoset">
-        {/block:Photos}</center>
-            
+              {Photoset}
         <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
         {/block:Photoset}
         
@@ -855,10 +857,9 @@ ol.notes li:before {
 {block:SourceLogo}<img src="{BlackLogoURL}"width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}
 {block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
 {/block:ContentSource}
+<a href="{ReblogParentURL}" title="{ReblogParentName}">{block:RebloggedFrom}via{/block:RebloggedFrom}</a>  <a href="{SourceURL}" title="{SourceTitle}">{block:ContentSource}©{/block:ContentSource}</a>
     
-</div> <!-- end wrapper div --> 
-    
-    <!-- pagination -->
+<!-- pagination -->
     {block:Pagination}
       <div id="pagination">
             {block:PreviousPage}
@@ -873,13 +874,45 @@ ol.notes li:before {
             {block:NextPage}<a href="{NextPage}"><i class="fa fa-chevron-right"></i></a>{/block:NextPage}
       </div>
     {/block:Pagination}
+</div>  <!-- end post container div -->
 
-</div>
-<!-- posts container ends -->
+</div> <!-- end wrapper div -->
+
 
 <div id="x">
 <a href="http://mechanise.tumblr.com">µ</a>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script>
+  /* credit to oddhour.tumblr.com */
+     var updatePhotosetCss = "<style id='updatePhotosetStyle'> .photoset .photoset_row.photoset_row_1 img { max-width: 540px; } .photoset .photoset_row.photoset_row_2 img { max-width: 268px; } .photoset .photoset_row.photoset_row_3 img { max-width: 177px; } .photoset .photoset_row { text-align: center; width: 540px; } .photoset { width: 540px; }</style>";
+   function updatePhotoset() {
+       
+        $(".photoset").each( function (i, e) {
+            if($(this.contentDocument).find("#updatePhotosetStyle").size() <= 0)
+                $(this.contentDocument).find("head").append(updatePhotosetCss);
+                var photoset = $(this.contentDocument).find(".photoset");
+                var photosetRows = photoset.find(".photoset_row");  
+            photoset.find(".photoset_photo")
+                .each(function () {
+                    var hiResSrc = $(this).attr("href");
+                    var img = $(this).find('img');
+                    img.attr("src", hiResSrc );
+                    img.attr("style", "");
+                });
+            photosetRows.attr("style", "").css("margin-bottom", "-5px");
+            photoset.attr("style","");
+           
+            $(this).height($(this.contentDocument.body).height());
+        });
+    }
+   
+    updatePhotoset();
+ 
+    var photosetTimer = setInterval(updatePhotoset, 1500);
+    $(window).on('load', function () { setTimeout(function() {clearInterval(photosetTimer)}, 2000); })
+</script>
 
 </body>
 </html>
