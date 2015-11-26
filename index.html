@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!---------------------------------------
+
+    theme by cairo mechanise.tumblr.com
+    don't remove credit
+
+----------------------------------------->
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{title}</title>
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+{block:Description}
+    <meta name="description" content="{MetaDescription}" />
+{/block:Description}
+    <meta name="color:topbar" content="#f0f0f0" />
+    <meta name="color:text" content="#787878" />
+    <meta name="color:bg" content="#f8f8f8" />
+    <meta name="color:top links" content="#ffffff" />
+    <meta name="color:link hover" content="#000000" />
+    <meta name="color:accent" content="#007889" />
+    <meta name="color:post bg" content="#f1f1f1" />
+    
+    <meta name="image:background" content="" />
+    <meta name="image:header" content="http://www.rentcafe.com/blog/wp-content/uploads/2011/11/SharkFin.jpg" />
+    
+    <meta name="if:FadingImages" content="0"/>
+    <!-- image bg as opposed to solid colour bg -->
+    <meta name="if:menu image bg" content="1"/>
+    <meta name="if:link1" content="1"/>
+    <meta name="if:link2" content="1"/>
+    <meta name="if:link3" content="1"/>
+    <meta name="if:link4" content="1"/>
+    <meta name="if:link5" content="1"/>
+    <meta name="if:link6" content="1"/>
+    
+    <meta name="font:Title" content="Helvetica Neue"/>
+    <meta name="font:Body" content="Helvetica Neue"/>
+    
+    <!-- top bar links -->
+    <meta name="text:menu link 1" content="index"/>
+    <meta name="text:menu link 2" content="ask"/>
+    <meta name="text:menu link 3" content="submit"/>
+    <meta name="text:menu link 4" content="archive"/>
+    
+    <meta name="text:menu link 1 url" content="/"/>
+    <meta name="text:menu link 2 url" content="/ask"/>
+    <meta name="text:menu link 3 url" content="/submit"/>
+    <meta name="text:menu link 4 url" content="/archive"/>
+    <!-- sidebar links -->
+    <meta name="text:Link1URL" content="/"/>
+    <meta name="text:Link2URL" content="/"/>
+    <meta name="text:Link3URL" content="/"/>
+    <meta name="text:Link4URL" content="/"/>
+    <meta name="text:Link5URL" content="/"/>
+    <meta name="text:Link6URL" content="/"/>
+    <meta name="text:Link1" content="link 1"/>
+    <meta name="text:Link2" content="link 2"/>
+    <meta name="text:Link3" content="link 3"/>
+    <meta name="text:Link4" content="link 4"/>
+    <meta name="text:Link5" content="link 5"/>
+    <meta name="text:Link6" content="link 6"/>
+    
+<link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    
+</head>
+<style>
+
+html {
+    font-size: 14px;
+}
+
+body {
+    background:url({image:background}) {color:bg};
+    padding:0px;
+    margin:0px;
+    font-family:{font:Body};
+    color:{color:text};
+    overflow-x: hidden;
+}
+
+a {
+    color:{color:accent};
+    border-bottom:1px solid {color:accent};
+    text-decoration:none;
+}
+
+a:hover {
+    color:{color:link hover};
+    border-color:{color:link hover};
+}
+
+blockquote {
+    border-left:1px solid {color:accent};
+    padding-left:1rem;
+    margin: 0 0 3rem 0.5rem;
+}
+        
+header {
+    background:{color:top links};
+    display:block;
+    text-align:center;
+    z-index:2;
+    position:relative;
+}
+
+header img {
+    width:100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index:2;
+}
+
+img {
+    display:block;
+    margin:0px;
+    max-width:100%;
+}
+
+small {
+    font-size:0.7rem;
+}
+
+big {
+    font-size:1.3rem;
+}
+
+pre {
+    font-family:inconsolata;
+    word-break:break-word;
+}
+
+ol, ul {
+    list-style:none;
+    padding:.5rem 0 .5rem 1rem;
+}
+
+li {
+    padding-left:1rem;
+    position:relative;
+}
+
+li:before {
+    content:'»';
+    position:absolute;
+    left:0;
+}
+
+/* main menu styling */
+
+#topbar {
+    position: fixed;
+    width: 100%;
+    height: 6rem;
+    color:{color:top links};
+  /*  background: {color:text}; */
+    z-index: 3;
+}
+
+#under {
+    position: fixed;
+    width: 100%;
+    height: 6rem;
+    background-color: {color:topbar};
+    {block:ifmenuimagebg}
+    background: url({image:header});
+    {/block:ifmenuimagebg}
+    background-position:center;
+    z-index: 1;
+}
+
+#title {
+    float: left;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 4rem;
+    margin: 0;
+    padding-left: 3rem;
+    padding-top: 1rem;
+    font-family: {font:Title};
+    color:{color:top links};
+}
+
+
+/* menu container */
+menu {
+    float:right;
+    margin:0px;
+    height: 2rem;
+    vertical-align:middle;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    font-size: 1rem;
+}
+
+/* menu links */
+#title a, menu a {
+    color:{color:top links};
+    margin:0;
+    padding: 0 1rem;
+    line-height: 4rem;
+    display: inline-block;
+    color:{color:top links};
+    font-family: {font:Title};
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+    border-bottom: 2px solid transparent !important;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+#title a:hover, menu a:hover {
+    /* color:{color:accent};*/
+    border-color: {color:top links}!important;
+    color:{color:top links}!important;
+}
+
+/* left sidebar styling */
+
+#sidebar {
+    position:absolute;
+    width:18rem;
+    margin-top:4rem;
+    z-index:0;
+    color:{color:text};
+}
+
+.cat {
+    text-transform:uppercase;
+    font-size:1.3rem;
+    padding:1rem;
+    font-weight:700;
+    color:{color:link hover};
+    font-family:{font:Title};
+    background:{color:topbar};
+}
+
+.con {
+    padding:0.7rem;
+    display:block;
+    background:{color:post bg};
+    color:{color:text};
+    font-size:1rem;
+    margin-bottom:25px;
+}
+
+.con ul {
+    padding-left: 1rem;
+    margin-top: -0.5rem;
+    margin-bottom: -0.5rem;
+}
+
+.con li:before {
+    content:none;
+}
+
+.con li {
+    display: block;
+    margin-left: -2rem;
+}
+
+/* right sidebar */
+
+#right {
+    position: absolute;
+    width: 18rem;
+    left: calc(20rem + 540px);
+    margin: 4rem 0 0 4rem;
+    z-index: 0;
+    color:{color:text};
+}
+
+
+/* blog's description style */
+.description {
+    
+}
+
+#navlinks {
+    margin-top:-0.77rem;
+    padding-bottom:0;
+}
+
+#navlinks a {
+    display:block;
+    padding:1rem 0 1rem 1rem;
+    border-top:0.1rem solid {color:topbar};
+    border-bottom:none;
+    color:{color:text};
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#navlinks a:hover {
+    letter-spacing:0.3rem;
+}
+
+.search {
+    display:inline;
+}
+
+#searchTxt {
+    font-family:{font:Title};
+    text-transform:uppercase;
+    letter-spacing:0.1rem;
+    outline:none;
+    border:1px solid {color:topbar};
+    line-height:1.5rem;
+    width: 13.3rem;
+    padding: 0.5rem 0.5rem 0.5rem 2.7rem;
+}
+
+.search .fa-search { 
+  position: absolute;
+  width:3rem;
+  height:3rem;
+  margin:0.7rem;
+}
+
+#members {
+    display:block;
+    word-spacing:0.2rem;
+}
+
+#members img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    border: 1px solid {color:topbar};
+    display:inline;
+}
+
+#members a {
+    border:none!important;
+    color:{color:text};
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+#members a:hover {
+    letter-spacing:0.3rem;
+    color:{color:text}!important;
+}
+
+.blog {
+    line-height: 2.5rem;
+    position: absolute;
+    margin-left: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+#calendar {
+    font-size:0.9rem;
+}
+
+#calendar h3 {
+    text-transform:uppercase;
+    font-weight:700;
+    font-size:1rem;
+}
+
+/* sidebars + posts container */
+#wrapper {
+    width:calc(34rem + 650px);
+    left:calc(50% - 17rem - 325px);
+    position:absolute;
+}
+
+/* posts container */
+
+#content {
+    margin-top:4rem;
+    margin-left:20rem;
+    margin-right:auto;
+    width:650px;
+    min-height:100%;
+    z-index:-20;
+}
+
+/* posts style */
+.post {
+    padding:10px;
+    width:540px;
+    display:block;
+    background:{color:post bg};
+    display:inline-block;
+    z-index:-20;
+}
+
+/* post title */
+h2 {
+    font-size:1.3rem;
+    font-weight:700;
+    margin:0px 0px 10px 0px;
+    color:{color:text};
+    text-align:center;
+}
+
+a. h2 {
+    color:{color:text};
+}
+
+/* posts info style */
+
+.information {
+    height:1.5rem;
+    font-size:0.8rem;
+    color:{color:text};
+    background:{color:top links};
+    letter-spacing:0.1rem;
+    width:532px;
+    margin-left:-10px;
+    text-align:center;
+    display:inline;
+    border-top: 1px solid {color:topbar};
+    padding: 1rem;
+    position:absolute
+}
+
+/* note count */
+
+.notec {
+    display:inline;
+}
+
+/*fading images */
+{block:ifFadingImages}
+#content img, .html_photoset {
+    opacity:.7;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#content img:hover, .html_photoset:hover {
+    opacity:1;
+}
+{/block:ifFadingImages}
+
+/* date and month style */
+.date {
+    text-transform:uppercase;
+    display:inline;
+}
+
+/* reblog and like button positioning */
+
+.reblog {
+    display:inline-block;
+    position: absolute;
+    margin-top: 3px;
+}
+
+.photo {
+    
+    
+}
+
+.photoset {
+    padding-bottom:10px;
+    width:540px;
+}
+
+/* quote posts style */
+
+.quote {
+    font-size:1.5rem;
+    text-align:center;
+    letter-spacing:0.1rem;
+    font-weight:100;
+    margin: 1rem 0 1rem 0;
+}
+.source {
+    font-size:0.9rem;
+    text-align:center;
+    font-style:italic;
+}
+
+/* ask posts style */
+
+.ask {
+    padding:5px;
+    background:{color:bg};
+}
+
+/* chat posts style */
+.chat ul {
+    display:block;
+    list-style:none;
+    font-family:inconsolata;
+}
+
+/* chat lines style */
+.chat li {
+    padding:3px;
+    display:block;
+}
+
+.chat li:before {
+    content:none!important;
+}
+
+
+/* odd lines style */
+.chat .odd {
+    background:{color:top links};
+}
+
+/* even lines style */
+.chat .even {
+    background:{color:bg};
+}
+
+.caption {
+    text-align:left;
+    word-break:break-word;
+}
+
+/* posts's tags style */
+#tags {
+    margin-bottom:3rem;
+    margin-top: 2.3rem;
+    padding: 0rem 1rem 1rem 1rem;
+    background: {color:post bg};
+    font-size: 0.8rem;
+    width: 532px;
+    text-align:center;
+    word-break:break-word;
+    position: relative;
+}
+
+#tags a, .information a {
+    color:{color:accent};
+    border:none!important;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+#tags a:hover, .information a:hover {
+    color:{color:link hover};
+}
+
+#content table tr td {
+    vertical-align:top;
+}
+
+#x {
+    position: fixed;
+    color: {color:text};
+    font-size:1.1rem;
+    font-weight:700;
+    line-height:1.1rem;
+    padding:0 0.25rem 0.2rem 0.25rem;
+    right:0;
+    bottom:0;
+    margin-bottom:0.2rem;
+    margin-right:0.2rem;
+    background: {color:bg};
+}
+
+#x a{
+    border:none!important;
+}
+
+
+ol.notes {
+    width: 540px;
+    list-style-type:none;
+    text-align:left;
+    background:{color:post bg};
+    padding-top:1.5rem;
+}
+ol.notes li {
+    padding-bottom:1rem;
+    position:relative;
+}
+       
+ol.notes li.note {
+    display:block;
+}
+
+ol.notes li.note img.avatar{
+    width:0px;
+    height:0px;
+}
+ol.notes li:before {
+    content:none!important;
+}
+
+
+/* pagination styles */
+
+#pagination {
+    text-align:center;
+    margin:1.5rem;
+}
+
+/* current page number */
+
+#pagination span {
+    background:{color:post bg};
+    color:{color:text};
+    padding:0.4rem;
+    width:1rem;
+    height:1rem;
+    display:inline-block;
+    margin-left:0.2rem;
+}
+
+/* other page numbers styles */
+
+#pagination a {
+    background:{color:text};
+    color:{color:post bg};
+    padding:0.4rem;
+    width:1rem;
+    height:1rem;
+    display:inline-block;
+    margin-left:0.2rem;
+    border:none!important;
+}
+
+</style>
+<body>
+<div id="under"></div>
+<div id="topbar">
+    <div id="title"><a href="/">{Title}</a></div>
+    <!-- main menu -->
+    <menu>
+        <a href="{text:menu link 1 url}">{text:menu link 1}</a>
+        <a href="{text:menu link 2 url}">{text:menu link 2}</a>
+        <a href="{text:menu link 3 url}">{text:menu link 3}</a>
+        <a href="{text:menu link 4 url}">{text:menu link 4}</a>
+    </menu>
+</div>
+<!-- header -->
+<header>
+        <center>
+                <!-- header image -->
+            <img src="{image:header}" />
+        </center>
+</header>
+<div id = "wrapper"> <!-- contains both sidebars and all posts -->
+<!-- sidebar -->
+
+<div id="sidebar">
+    <div class="cat"><span class="fa fa-quote-left"></span>&nbsp;about</div>
+    <div class="con">
+        <div class="description">{Description}</div><p>
+        <form action="/search" class="search" method="get">
+     <span class="fa fa-search fa-lg"></span>
+    <input id="searchTxt" name="q" placeholder="Search" type="text" value="{SearchQuery}"/>
+    </form>
+    </div>
+    <div class="cat"><span class="fa fa-navicon"></span>&nbsp;navigation</div>
+    <div class="con">
+        <div id="navlinks">
+        {block:iflink1}<a href="{text:Link1URL}">{text:Link1}</a>{/block:iflink1}
+        {block:iflink2}<a href="{text:Link2URL}">{text:Link2}</a>{/block:iflink2}
+        {block:iflink3}<a href="{text:Link3URL}">{text:Link3}</a>{/block:iflink3}
+        {block:iflink4}<a href="{text:Link4URL}">{text:Link4}</a>{/block:iflink4}
+        {block:iflink5}<a href="{text:Link5URL}">{text:Link5}</a>{/block:iflink5}
+        {block:iflink6}<a href="{text:Link6URL}">{text:Link6}</a>{/block:iflink6}
+        </div>
+    </div>
+    <div class="cat"><span class="fa fa-users"></span>&nbsp;members</div>
+    <div class="con">
+        <div id="members">
+        <!-- for best display on a retina screen, make sure the img is at least 140x140px -->
+            <a href="MEMBER URL 1 HERE"><img src="http://40.media.tumblr.com/189ade31f3dc37dc8cb64d5a4fa10736/tumblr_neq3zl1cLU1tu83k7o1_1280.png"></a>
+            <a href="MEMBER URL 1 HERE" class="blog">member url 1</a><p>
+            <a href="MEMBER URL 2 HERE"><img src="IMG URL HERE"></a>
+            <a href="MEMBER URL 2 HERE" class="blog">member url 2</a><p>
+            <a href="MEMBER URL 3 HERE"><img src="IMG URL HERE"></a>
+            <a href="MEMBER URL 3 HERE" class="blog">member url 3</a>
+        </div>
+    </div>
+    <div class="cat"><span class="fa fa-warning"></span>&nbsp;disclaimer</div>
+    <div class="con">
+        disclaimer text goes here
+    </div>
+</div> <!--end 1st sidebar div -->
+
+<div id="right"> <!-- right sidebar -->
+    <div class="cat"><span class="fa fa-bookmark"></span>&nbsp;calendar</div>
+    <div class="con">
+        <div id="calendar">
+            <ul>
+                <li>
+                    <h3>event title</h3>
+                    event description!
+                </li>
+                <li>
+                    <h3>another event</h3>
+                    another event description.. life goes on
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="cat"><span class="fa fa-twitter"></span>&nbsp;extra widget 1</div>
+    <div class="con">
+        <!-- content for extra widget 1 goes here -->
+        anything goes here!
+    </div>
+    <div class="cat"><span class="fa fa-line-chart"></span>&nbsp;information</div>
+    <div class="con">
+        <ul>
+            <li>currently online:</li>
+            <li>total pageviews:</li>
+        </ul>
+    </div>
+    <div class="cat"><span class="fa fa-check"></span>&nbsp;extra widget 2</div>
+    <div class="con">
+        <!-- content for extra widget 3 goes here -->
+        more stuff.. more content.... so much content. please! take a look at the beautiful content
+    </div>
+</div> <!--end right sidebar div -->
+
+<!-- content container -->
+<div id="content">
+        
+    <!-- posts start -->
+    {block:posts}
+                
+        <div class="post">
+            
+            <!-- text post -->
+        {block:Text}
+                {block:Title}
+                        <a href="{Permalink}">
+                          <h2>{Title}</h2>
+                        </a>
+                {/block:Title}
+                {Body}
+        {/block:Text}
+        
+        <!-- quote post -->
+        {block:Quote}
+            <div class="quote">{Quote}</div>
+             <div class="source">— {Source}</div>
+        {/block:Quote}
+
+<!-- link post -->
+        {block:Link}
+                <a href="{URL}">
+                  <h2>{Name}&nbsp;<span class="fa fa-chevron-right"></span></h2>
+                </a>
+                {block:Description}{Description}{/block:Description}
+        {/block:Link}
+        
+        <!-- photo post -->
+        {block:Photo}
+            <a class="photo" href="{permalink}">
+                <img src="{PhotoURL-HighRes}" title="{PhotoAlt}" width="100%"/>
+            </a>
+            <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
+        {/block:Photo}
+         
+        
+        <!-- photoset post -->
+        
+        {block:Photoset}
+               <center>{block:Photos}
+        <img src="{PhotoURL-HighRes}" class="photoset">
+        {/block:Photos}</center>
+            
+        <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
+        {/block:Photoset}
+        
+        
+        <!-- chat post -->
+        {block:Chat}
+                <div class="chat">
+                  <ul>
+                        {block:Lines}
+                        <li class="{Alt}">
+                          {block:Label}<b>{Label}</b>{/block:Label}
+                          {Line}
+                        </li>
+                        {/block:Lines}
+                  </ul>
+                </div>
+        {/block:Chat}
+        
+<!-- video post -->
+        {block:Video}
+                {Video-500}
+                {block:Caption}{Caption}{/block:Caption}
+        {/block:Video}
+        
+        <!-- audio post -->
+        {block:Audio}
+                {block:AlbumArt}
+                        <img src="{AlbumArtURL}" width="100" align="left" style="margin-right:5px">
+                {/block:AlbumArt}
+                {AudioPlayerBlack}
+                {block:Artist}<b>Artist:</b> {Artist}<br>{/block:Artist}
+                {block:TrackName}<b>Title:</b> {TrackName}{/block:TrackName}
+                {block:Caption}{Caption}{/block:Caption}
+        {/block:Audio}
+        
+        <!-- ask post -->
+        {block:Answer}
+                <div class="ask">
+                        <b>{Asker} asked:</b> {question}
+                </div>
+                {Answer}
+        {/block:Answer}
+        <!-- posts information -->
+        <div class="information">
+            <!-- posts's date -->
+            {block:Date}
+            POSTED ON <a class="date" href="{permalink}">{ShortMonth}&nbsp;{DayOfMonthWithZero}<sup>{DayOfMonthSuffix}</sup>,&nbsp;{Year}</a>
+            {/block:Date}
+            <!-- notes count -->
+            {block:NoteCount}
+            &nbsp;/&nbsp;
+            <a class="notec" href="{PostNotesURL}">{NoteCount}&nbsp;<span class="fa fa-heart-o"></span></a>
+            {/block:NoteCount}
+            &nbsp;/&nbsp;
+            <div class="reblog">{ReblogButton size="12"}</div>
+        </div>
+    </div> <!-- end post div -->
+    
+<div id="tags">
+{block:HasTags}{block:Tags}<a href="{TagURL}">#{Tag} </a>{/block:Tags}{/block:HasTags}
+</div>
+
+{block:PostNotes}{PostNotes}{/block:PostNotes}
+
+{/block:posts}
+    <!-- end posts -->
+    
+{block:ContentSource}<!-- {SourceURL}
+{block:SourceLogo}<img src="{BlackLogoURL}"width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}
+{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
+{/block:ContentSource}
+    
+</div> <!-- end wrapper div --> 
+    
+    <!-- pagination -->
+    {block:Pagination}
+      <div id="pagination">
+            {block:PreviousPage}
+            <a href="{PreviousPage}"><i class="fa fa-chevron-left"></i></a>
+            {/block:PreviousPage} 
+            {block:JumpPagination length="5"} 
+            {block:CurrentPage}
+            <span class="current_page">{PageNumber}</span>
+            {/block:CurrentPage}
+            {block:JumpPage}<a href="{URL}">{PageNumber}</a> {/block:JumpPage}
+            {/block:JumpPagination}
+            {block:NextPage}<a href="{NextPage}"><i class="fa fa-chevron-right"></i></a>{/block:NextPage}
+      </div>
+    {/block:Pagination}
+
+</div>
+<!-- posts container ends -->
+
+<div id="x">
+<a href="http://mechanise.tumblr.com">µ</a>
+</div>
+
+</body>
+</html>
